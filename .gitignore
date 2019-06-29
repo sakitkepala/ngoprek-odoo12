@@ -1,5 +1,9 @@
 odoo
 
+# projek coba-coba, dikecualikan
+custom-addons/library_app
+custom-addons/school
+
 # compiled python files
 *.py[co]
 __pycache__/

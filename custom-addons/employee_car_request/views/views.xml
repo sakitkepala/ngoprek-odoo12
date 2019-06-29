@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<odoo>
+  <data>
+    <record id="view_car_request_form" model="ir.ui.view">
+      <field name="name">view.car.request.form</field>
+      <field name="model">car.request</field>
+      <field name="arch" type="xml">
+        <form name="Car Request Form">
+          <sheet>
+            <div class="oe_title">
+              <label for="name" class="oe_edit_only"/>
+              <h1>
+                <field name="name" placeholder="Request"/>
+              </h1>
+            </div>
+
+            <group>
+              <group>
+                <field name="date_from" />
+                <field name="date_to" />
+              </group>
+              <group>
+                <field name="employee_id" />
+                <field name="car_id" />
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="view_car_request_tree" model="ir.ui.view">
+      <field name="name">view.car.request.tree</field>
+      <field name="model">car.request</field>
+      <field name="arch" type="xml">
+        <tree string="Car Request Tree">
+          <field name="name"/>
+          <field name="employee_id"/>
+          <field name="car_id"/>
+          <field name="date_from"/>
+          <field name="date_to"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="action_car_request_views" model="ir.actions.act_window">
+      <field name="name">Car Request</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">car.request</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+        <p class="oe_view_nocontent_create">Car Request</p>
+        <p>Click to add car request</p>
+      </field>
+    </record>
+
+    <menuitem id="menu_car_request_root" name="Car Request" sequence="10"/>
+    <menuitem id="menu_car_request_categ" name="Car Request" parent="menu_car_request_root" sequence="1"/>
+    <menuitem id="menu_car_request" name="Car Request" parent="menu_car_request_categ" action="action_car_request_views" sequence="1"/>
+  </data>
+</odoo>

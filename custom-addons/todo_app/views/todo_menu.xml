@@ -1,4 +1,4 @@
-<?xml version="1.0">
+<?xml version="1.0"?>
 <odoo>
   <!-- Action untuk buka List To-do Task -->
   <act_window id="action_todo_task"

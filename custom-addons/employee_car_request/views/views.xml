@@ -7,10 +7,32 @@
       <field name="arch" type="xml">
         <form name="Car Request Form">
           <header>
-            <button name="confirm_request" string="Confirm" class="oe_highlight" states="draft" type="object"/>
-            <button name="validate_request" string="Validate" class="oe_highlight" states="confirmed" type="object"/>
-            <button name="approve_request" string="Approve" class="oe_highlight" states="validated" type="object"/>
-            <button name="refuse_request" string="Refuse" states="confirmed,validated" type="object"/>
+            <button name="confirm_request"
+              string="Confirm"
+              class="oe_highlight"
+              states="draft"
+              type="object"
+              />
+            <button name="validate_request"
+              string="Validate"
+              class="oe_highlight"
+              states="confirmed"
+              type="object"
+              groups="hr.group_hr_user"
+              />
+            <button name="approve_request"
+              string="Approve"
+              class="oe_highlight"
+              states="validated"
+              type="object"
+              groups="hr.group_hr_manager"
+              />
+            <button name="refuse_request" string="Refuse"
+              states="confirmed,validated"
+              type="object"
+              groups="hr.group_hr_user,hr.group_hr_manager"
+              />
+
             <field name="state"
               widget="statusbar"
               statusbar_visible="draft,confirmed,validated"
@@ -35,6 +57,11 @@
               </group>
             </group>
           </sheet>
+
+          <div class="oe_chatter">
+            <field name="message_follower_ids" widget="mail_followers"/>
+            <field name="message_ids" widget="mail_thread"/>
+          </div>
         </form>
       </field>
     </record>

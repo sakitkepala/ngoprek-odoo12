@@ -34,6 +34,23 @@
       </field>
     </record>
 
+    <record model="ir.ui.view" id="view_form_session">
+      <field name="name">session.form</field>
+      <field name="model">openacademy.session</field>
+      <field name="arch" type="xml">
+        <form string="Form Session">
+          <sheet>
+            <group>
+              <field name="name" />
+              <field name="start_date" />
+              <field name="duration" />
+              <field name="seats" />
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
     <record model="ir.actions.act_window" id="action_list_course">
       <field name="name">Kelas-Kelas</field>
       <field name="res_model">openacademy.course</field>
@@ -44,11 +61,21 @@
       </field>
     </record>
 
+    <record model="ir.actions.act_window" id="action_list_session">
+      <field name="name">Sesi-sesi</field>
+      <field name="res_model">openacademy.session</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
     <menuitem id="menu_utama_openacademy" name="Open Academy" />
     <menuitem id="menu_openacademy" name="Open Academy"
       parent="menu_utama_openacademy" />
-    <menuitem id="menu_course" name="Kelas-kelas"
-      parent="menu_openacademy"
-      action="action_list_course" />
+      <menuitem id="menu_course" name="Kelas-Kelas"
+        parent="menu_openacademy"
+        action="action_list_course" />
+      <menuitem id="menu_session" name="Sesi-Sesi"
+        parent="menu_openacademy"
+        action="action_list_session" />
   </data>
 </odoo>

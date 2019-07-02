@@ -28,5 +28,22 @@
       <menuitem id="menu_kontak" name="Kontak"
         parent="menu_configuration"
         action="action_list_contact" />
+
+    <record model="ir.actions.act_window" id="action_list_contact_cat">
+      <field name="name">Tag Kontak</field>
+      <field name="res_model">res.partner.category</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_contact_cat" name="Tag Kontak"
+      parent="menu_configuration"
+      action="action_list_contact_cat" />
+
+    <record model="res.partner.category" id="teacher1">
+      <field name="name">Teacher / Level 1</field>
+    </record>
+    <record model="res.partner.category" id="teacher2">
+      <field name="name">Teacher / Level 2</field>
+    </record>
   </data>
 </odoo>

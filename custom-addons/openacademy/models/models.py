@@ -31,9 +31,10 @@ class Session(models.Model):
   _description = "Sesi-sesi Open Academy"
 
   name = fields.Char(required=True)
-  start_date = fields.Datetime()
+  start_date = fields.Date(default=fields.Date.today)
   duration = fields.Float(digits=(6,2), help="Durasi dalam hari")
   seats = fields.Integer(string="Jumlah kursi")
+  active = fields.Boolean(default=True)
 
   instructor_id = fields.Many2one('res.partner', string="Instructor",
     domain=['|',('instructor', '=', True),

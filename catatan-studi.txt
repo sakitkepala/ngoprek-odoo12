@@ -1,0 +1,26 @@
+python import: module/package
+
+odoo module == python package
+https://www.odoo.com/documentation/12.0/howtos/backend.html#module-structure
+https://docs.python.org/2/tutorial/modules.html#packages
+
+file XML (yang saat ini untuk definisi view) sejatinya file data
+  data XML ini secara umum untuk bikin/update record model di database
+  caranya, bikin entry record di XML yang menunjukkan:
+    model yang ingin dituju
+    id record
+    field yang ditunjuk dari namanya serta nilai fieldnya
+
+menu & view bisa tampil di aplikasi kalau sudah dikasih akses
+  yang didefinisikan lewat file akses csv
+model id di field file csv security access harus dari model yang ada
+nilai model pakai underscore, bukan dot
+
+nama model untuk field relasi Many2one tanpa nama variable parameter,
+  langsung string nama modelnya
+  fields.Many2one('res.users')
+
+security/access menentukan permission untuk memperbolehkan:
+  - lihat data          -> perm_read
+  - edit data           -> perm_write
+  - tambahkan/buat data -> perm_create

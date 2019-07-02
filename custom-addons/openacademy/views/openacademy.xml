@@ -5,17 +5,23 @@
       <field name="name">course.form</field>
       <field name="model">openacademy.course</field>
       <field name="arch" type="xml">
-        <form string="Form Kelas Training">
+        <form string="Form Pelajaran Training">
           <sheet>
             <group>
               <field name="name" />
+              <field name="responsible_id" />
             </group>
             <notebook>
               <page string="Description">
                 <field name="description" />
               </page>
-              <page string="About">
-                Contoh notebook
+              <page string="Sessions">
+                <field name="session_ids">
+                  <tree string="Registered sessions">
+                    <field name="name" />
+                    <field name="instructor_id" />
+                  </tree>
+                </field>
               </page>
             </notebook>
           </sheet>
@@ -34,6 +40,17 @@
       </field>
     </record>
 
+    <record model="ir.ui.view" id="view_tree_course">
+      <field name="name">course.tree</field>
+      <field name="model">openacademy.course</field>
+      <field name="arch" type="xml">
+        <tree string="Course Tree">
+          <field name="name" />
+          <field name="responsible_id" />
+        </tree>
+      </field>
+    </record>
+
     <record model="ir.ui.view" id="view_form_session">
       <field name="name">session.form</field>
       <field name="model">openacademy.session</field>
@@ -41,23 +58,42 @@
         <form string="Form Session">
           <sheet>
             <group>
-              <field name="name" />
-              <field name="start_date" />
-              <field name="duration" />
-              <field name="seats" />
+              <group string="General">
+                <field name="course_id" />
+                <field name="name" />
+                <field name="instructor_id" />
+              </group>
+              <group string="Schedule">
+                <field name="start_date" />
+                <field name="duration" />
+                <field name="seats" />
+              </group>
             </group>
+            <label for="attendee_ids" />
+            <field name="attendee_ids" />
           </sheet>
         </form>
       </field>
     </record>
 
+    <record model="ir.ui.view" id="view_tree_session">
+      <field name="name">session.tree</field>
+      <field name="model">openacademy.session</field>
+      <field name="arch" type="xml">
+        <tree string="Session Tree">
+          <field name="name" />
+          <field name="course_id" />
+        </tree>
+      </field>
+    </record>
+
     <record model="ir.actions.act_window" id="action_list_course">
-      <field name="name">Kelas-Kelas</field>
+      <field name="name">Pelajaran-Pelajaran</field>
       <field name="res_model">openacademy.course</field>
       <field name="view_type">form</field>
       <field name="view_mode">tree,form</field>
       <field name="help" type="html">
-        <p class="o_view_nocontent_smiling_face">Tambahkan kelas untuk pertama kalinya</p>
+        <p class="o_view_nocontent_smiling_face">Tambahkan pelajaran untuk pertama kalinya</p>
       </field>
     </record>
 
@@ -71,7 +107,7 @@
     <menuitem id="menu_utama_openacademy" name="Open Academy" />
     <menuitem id="menu_openacademy" name="Open Academy"
       parent="menu_utama_openacademy" />
-      <menuitem id="menu_course" name="Kelas-Kelas"
+      <menuitem id="menu_course" name="Pelajaran-Pelajaran"
         parent="menu_openacademy"
         action="action_list_course" />
       <menuitem id="menu_session" name="Sesi-Sesi"

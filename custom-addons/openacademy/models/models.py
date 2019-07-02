@@ -41,3 +41,18 @@ class Session(models.Model):
   course_id = fields.Many2one('openacademy.course',
     ondelete='cascade', string="Course", required=True)
   attendee_ids = fields.Many2many('res.partner', string="Peserta")
+
+  taken_seats = fields.Float(string="Kursi yang sudah diambil", compute='_taken_seats')
+
+  # dekorator depends() ini dipakai ketika nilai field kompyutednya
+  # tergantung dari nilai field lain yang ada
+  # di bawah ini contohnya tergantung pada field seats & attendee_ids
+  @api.depends('seats', 'attendee_ids')
+  def _taken_seats(self):
+    # for loop ini agar SEMUA RECORD
+    # dengan field taken_seats ini kena pengaruh kompyuted-nya
+    for rec in self:
+      if not rec.seats:
+        rec.taken_seats = 0.0
+      else:
+        rec.taken_seats = 100.0 * len(rec.attendee_ids) / rec.seats

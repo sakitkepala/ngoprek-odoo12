@@ -57,3 +57,20 @@ class Session(models.Model):
         rec.taken_seats = 0.0
       else:
         rec.taken_seats = 100.0 * len(rec.attendee_ids) / rec.seats
+
+  @api.onchange('seats','attendee_ids')
+  def _verify_valid_seats(self):
+    if self.seats < 0:
+      return {
+        'warning': {
+          'title': "Nilai 'seats' keliru",
+          'message': "Jumlah kursi tersedia tidak boleh negatif",
+        },
+      }
+    if self.seats < len(self.attendee_ids):
+      return {
+        'warning': {
+          'title': "Terlalu banyak pesertanya",
+          'message': "Naikkan jumlah kursinya atau kurangi kelebihan pesertanya",
+        },
+      }

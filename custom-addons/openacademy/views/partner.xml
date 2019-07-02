@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <data>
+    <record model="ir.ui.view" id="view_form_partner_instructor">
+      <field name="name">partner.instructor</field>
+      <field name="model">res.partner</field>
+      <field name="inherit_id" ref="base.view_partner_form" />
+      <field name="arch" type="xml">
+        <notebook position="inside">
+          <page string="Sesi-Sesi">
+            <group>
+              <field name="instructor" />
+              <field name="session_ids" />
+            </group>
+          </page>
+        </notebook>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_list_contact">
+      <field name="name">Kontak</field>
+      <field name="res_model">res.partner</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_configuration" name="Konfigurasi"
+      parent="menu_utama_openacademy" />
+      <menuitem id="menu_kontak" name="Kontak"
+        parent="menu_configuration"
+        action="action_list_contact" />
+  </data>
+</odoo>

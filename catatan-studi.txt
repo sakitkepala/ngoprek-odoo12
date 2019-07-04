@@ -25,7 +25,12 @@ security/access menentukan permission untuk memperbolehkan:
   - edit data           -> perm_write
   - tambahkan/buat data -> perm_create
 
-  memodifikasi model & view yang sudah ada tidak langsung di file class-nya
-    tapi dengan meng-inherit class aslinya dari file baru --> Inheritance
-    class asli/parent masih utuh
-    modifikasinya ada di file baru
+memodifikasi model & view yang sudah ada tidak langsung di file class-nya
+  tapi dengan meng-inherit class aslinya dari file baru --> Inheritance
+  class asli/parent masih utuh
+  modifikasinya ada di file baru
+
+decorators...
+  @api.depends()
+  @api.onchange()
+  @api.constrains()

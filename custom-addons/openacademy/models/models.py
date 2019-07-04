@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, fields, api
+from odoo import models, fields, api, exceptions
 
 # class openacademy(models.Model):
   # _name = 'openacademy.openacademy'
@@ -74,3 +74,7 @@ class Session(models.Model):
           'message': "Naikkan jumlah kursinya atau kurangi kelebihan pesertanya",
         },
       }
+
+  @api.constrains('instructor_id', 'attendee_ids')
+  def _check_instructor_not_in_attendees(self):
+    # ...

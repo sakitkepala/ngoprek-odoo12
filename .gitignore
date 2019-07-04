@@ -3,6 +3,7 @@ odoo
 # projek coba-coba, dikecualikan
 custom-addons/library_app
 custom-addons/school
+custom-addons/erpi_base
 
 # compiled python files
 *.py[co]

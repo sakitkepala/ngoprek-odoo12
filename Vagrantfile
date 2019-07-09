@@ -12,7 +12,7 @@ Vagrant.configure("2") do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
-  config.vm.box = "ThyDao/odoo-box"
+  config.vm.box = "ubuntu/bionic64"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -67,4 +67,19 @@ Vagrant.configure("2") do |config|
   #   apt-get update
   #   apt-get install -y apache2
   # SHELL
+
+
+  # ####################################
+  # Custom config untuk Odoo Development
+  # ####################################
+
+  config.vm.network :forwarded_port, host: 8069, guest: 8069
+
+  config.vm.network "private_network", ip: "192.168.10.10"
+
+  config.vm.provider "virtualbox" do |vb|
+    vb.memory = "2048"
+  end
+
+  config.vm.provision "shell", path: "odoo.sh"
 end

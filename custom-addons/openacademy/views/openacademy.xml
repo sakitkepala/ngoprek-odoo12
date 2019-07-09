@@ -101,11 +101,21 @@
       </field>
     </record>
 
+    <record id="view_calendar_session" model="ir.ui.view">
+      <field name="name">session.calendar</field>
+      <field name="model">openacademy.session</field>
+      <field name="arch" type="xml">
+        <calendar string="Kalender Sesi (Kelas)" date_start="start_date" date_stop="end_date" color="instructor_id">
+          <field name="name" />
+        </calendar>
+      </field>
+    </record>
+
     <record model="ir.actions.act_window" id="action_list_session">
       <field name="name">Sesi-sesi</field>
       <field name="res_model">openacademy.session</field>
       <field name="view_type">form</field>
-      <field name="view_mode">tree,form</field>
+      <field name="view_mode">tree,form,calendar</field>
     </record>
 
     <menuitem id="menu_utama_openacademy" name="Open Academy" />

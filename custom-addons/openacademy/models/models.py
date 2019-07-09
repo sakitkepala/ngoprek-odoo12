@@ -77,4 +77,6 @@ class Session(models.Model):
 
   @api.constrains('instructor_id', 'attendee_ids')
   def _check_instructor_not_in_attendees(self):
-    # ...
+    for rec in self:
+      if rec.instructor_id and rec.instructor_id in rec.attendee_ids:
+        raise exceptions.ValidationError("Instruktor tidak bisa peserta")

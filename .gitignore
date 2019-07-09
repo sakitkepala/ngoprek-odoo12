@@ -12,3 +12,7 @@ custom-addons/erpi_base
 # compiled python files
 *.py[co]
 __pycache__/
+
+# File generated dari Vagrant
+*.box
+*.log

@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from datetime import timedelta
 from odoo import models, fields, api, exceptions
 
 # class openacademy(models.Model):
@@ -70,6 +71,9 @@ class Session(models.Model):
 
   taken_seats = fields.Float(string="Kursi yang sudah diambil", compute='_taken_seats')
 
+  end_date = fields.Date(string="Tanggal berakhir", store=True,
+    compute='_get_end_date', inverse='_set_end_date')
+
   # dekorator depends() ini dipakai ketika nilai field kompyutednya
   # tergantung dari nilai field lain yang ada
   # di bawah ini contohnya tergantung pada field seats & attendee_ids
@@ -105,3 +109,20 @@ class Session(models.Model):
     for rec in self:
       if rec.instructor_id and rec.instructor_id in rec.attendee_ids:
         raise exceptions.ValidationError("Instruktor tidak bisa peserta")
+
+  @api.depends('start_date', 'duration')
+  def _get_end_date(self):
+    for rec in self:
+      if not (rec.start_date and rec.duration):
+        rec.end_date = rec.start_date
+        continue
+
+      duration = timedelta(days=rec.duration, seconds=-1)
+      rec.end_date = rec.start_date + duration
+
+  def _set_end_date(self):
+    for rec in self:
+      if not (rec.start_date and rec.end_date):
+        continue
+
+      duration = (rec.end_date - rec.start_date).days + 1

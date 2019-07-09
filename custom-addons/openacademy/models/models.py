@@ -26,6 +26,16 @@ class Course(models.Model):
   session_ids = fields.One2many(
     'openacademy.session', 'course_id', string="Sesi-Sesi")
 
+  _sql_constraints = [
+    ('check_name_description',
+    'CHECK(name != description)',
+    "Judulnya gak boleh sama deskripsinya"),
+
+    ('name_unique',
+    'UNIQUE(name)',
+    "Judul pelajaran harus unik"),
+  ]
+
 class Session(models.Model):
   _name = 'openacademy.session'
   _description = "Sesi-sesi Open Academy"

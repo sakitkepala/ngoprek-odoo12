@@ -34,3 +34,9 @@ decorators...
   @api.depends()
   @api.onchange()
   @api.constrains()
+
+Model constraint dengan Python Constraint diterapkan dengan pakai
+  method model ber-decorator @api.constrains()
+
+SQL Constraint diterapkan dengan pakai
+  atribut model _sql_constraints

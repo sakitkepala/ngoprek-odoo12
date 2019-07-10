@@ -40,3 +40,7 @@ Model constraint dengan Python Constraint diterapkan dengan pakai
 
 SQL Constraint diterapkan dengan pakai
   atribut model _sql_constraints
+
+> self < pada model itu recordset, isinya data kumpulan record suatu model
+  - bisa mengakses tiap recordnya dengan perulangan loop
+  - bisa mengakses fieldnya dengan nama properti class modelnya dengan setelah di loop

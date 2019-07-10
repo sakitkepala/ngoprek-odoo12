@@ -118,11 +118,22 @@
       </field>
     </record>
 
+    <record id="view_graph_session_openacademy" model="ir.ui.view">
+      <field name="name">session.graph</field>
+      <field name="model">openacademy.session</field>
+      <field name="arch" type="xml">
+        <graph string="Partisipasi Berdasarkan Pelajaran">
+          <field name="course_id" />
+          <field name="attendees_count" type="measure" />
+        </graph>
+      </field>
+    </record>
+
     <record model="ir.actions.act_window" id="action_list_session">
       <field name="name">Sesi-sesi</field>
       <field name="res_model">openacademy.session</field>
       <field name="view_type">form</field>
-      <field name="view_mode">tree,form,calendar</field>
+      <field name="view_mode">tree,form,calendar,graph</field>
     </record>
 
     <menuitem id="menu_utama_openacademy" name="Open Academy" />

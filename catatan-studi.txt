@@ -44,3 +44,6 @@ SQL Constraint diterapkan dengan pakai
 > self < pada model itu recordset, isinya data kumpulan record suatu model
   - bisa mengakses tiap recordnya dengan perulangan loop
   - bisa mengakses fieldnya dengan nama properti class modelnya dengan setelah di loop
+
+root element (view)
+  elemen root yang dipasang di dalam field 'arch' di XML model view

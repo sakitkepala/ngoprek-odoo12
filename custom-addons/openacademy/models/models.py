@@ -3,18 +3,6 @@
 from datetime import timedelta
 from odoo import models, fields, api, exceptions
 
-# class openacademy(models.Model):
-  # _name = 'openacademy.openacademy'
-
-  # name = fields.Char()
-  # value = fields.Integer()
-  # value2 = fields.Float(compute="_value_pc", store=True)
-  # description = fields.Text()
-
-  # @api.depends('value')
-  # def _value_pc(self):
-  #     self.value2 = float(self.value) / 100
-
 class Course(models.Model):
   _name = 'openacademy.course'
   _description = "Pelajaran-Pelajaran Open Academy"
@@ -73,6 +61,9 @@ class Session(models.Model):
 
   end_date = fields.Date(string="Tanggal berakhir", store=True,
     compute='_get_end_date', inverse='_set_end_date')
+  
+  attendees_count = fields.Integer(
+    string="Jumlah Peserta", compute='_get_attendees_count', store=True)
 
   # dekorator depends() ini dipakai ketika nilai field kompyutednya
   # tergantung dari nilai field lain yang ada
@@ -126,3 +117,8 @@ class Session(models.Model):
         continue
 
       duration = (rec.end_date - rec.start_date).days + 1
+
+  @api.depends('attendee_ids')
+  def _get_attendees_count(self):
+    for rec in self:
+      rec.attendees_count = len(rec.attendee_ids)

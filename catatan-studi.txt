@@ -47,3 +47,12 @@ SQL Constraint diterapkan dengan pakai
 
 root element (view)
   elemen root yang dipasang di dalam field 'arch' di XML model view
+
+view kanban untuk suatu model dimulai dengan elemen root: <kanban>
+  elemen <kanban> punya atribut: default_group_by="nama_field" untuk
+    mengelompokkan card dalam list berdasarkan nama field yang diisikan pada atribut
+  xml yang dicantumkan dalam <kanban> itu struktur untuk card yang akan ditampilkan
+    (struktur-struktur yang disediakan mungkin bisa dilihat di dokumentasi (?))
+  struktur card kanban dibuat dari campuran elemen form, html, & QWeb
+  hasilnya adalah kanban board full, card yang ditumpuk dalam 1 list berkategori sama,
+    dengan beberapa list/kolom

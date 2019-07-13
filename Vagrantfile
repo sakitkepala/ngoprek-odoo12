@@ -78,11 +78,15 @@ Vagrant.configure("2") do |config|
   config.vm.network :forwarded_port, host: 8069, guest: 8069
 
   config.vm.network "private_network", ip: "192.168.10.10"
+
+  # config.vm.boot_timeout = 1000
   
   # config.vm.network "public_network", bridge: "Intel(R) Dual Band Wireless-AC 7265"
 
   config.vm.provider "virtualbox" do |vb|
-    vb.memory = "2048"
+    # vb.gui = true
+    vb.memory = "4096"
+    vb.customize [ "modifyvm", :id, "--uartmode1", "disconnected" ]
   end
 
   config.vm.provision "shell", path: "odoo.sh"

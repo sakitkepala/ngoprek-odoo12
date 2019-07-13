@@ -190,6 +190,19 @@
         parent="menu_openacademy"
         action="action_list_session" />
 
+    <record id="wizard_form_view" model="ir.ui.view">
+      <field name="name">wizard.form</field>
+      <field name="model">openacademy.wizard</field>
+      <field name="arch" type="xml">
+        <form string="Menambahkan Peserta">
+          <group>
+            <field name="session_id" />
+            <field name="attendee_ids" />
+          </group>
+        </form>
+      </field>
+    </record>
+    
     <act_window id="launch_session_wizard"
       name="Menambahkan Peserta"
       src_model="openacademy.session"

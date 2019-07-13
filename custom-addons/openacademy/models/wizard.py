@@ -10,3 +10,8 @@ class Wizard(models.TransientModel):
   session_id = fields.Many2one('openacademy.session',
     string="Sesi", required=True, default=_default_session)
   attendee_ids = fields.Many2many('res.partner', string="Peserta")
+
+  @api.multi
+  def subscribe(self):
+    self.session_id.attendee_ids |= self.attendee_ids
+    return {}

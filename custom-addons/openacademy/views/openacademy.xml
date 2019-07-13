@@ -196,7 +196,7 @@
       <field name="arch" type="xml">
         <form string="Menambahkan Peserta">
           <group>
-            <field name="session_id" />
+            <field name="session_ids" />
             <field name="attendee_ids" />
           </group>
           <footer>

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from datetime import timedelta
-from odoo import models, fields, api, exceptions
+from odoo import models, fields, api, exceptions, _
 
 class Course(models.Model):
   _name = 'openacademy.course'
@@ -20,12 +20,12 @@ class Course(models.Model):
     default = dict(default or {})
 
     copied_count = self.search_count(
-      [('name', '=like', u"Copy of {}".format(self.name))]
+      [('name', '=like', _(u"Copy of {}").format(self.name))]
     )
     if not copied_count:
-      new_name = u"Copy of {}".format(self.name)
+      new_name = _(u"Copy of {}").format(self.name)
     else:
-      new_name = u"Copy of {} ({})".format(self.name, copied_count)
+      new_name = _(u"Copy of {} ({})").format(self.name, copied_count)
 
     default['name'] = new_name
     return super(Course, self).copy(default)
@@ -84,15 +84,15 @@ class Session(models.Model):
     if self.seats < 0:
       return {
         'warning': {
-          'title': "Nilai 'seats' keliru",
-          'message': "Jumlah kursi tersedia tidak boleh negatif",
+          'title': _("Nilai 'seats' keliru"),
+          'message': _("Jumlah kursi tersedia tidak boleh negatif"),
         },
       }
     if self.seats < len(self.attendee_ids):
       return {
         'warning': {
-          'title': "Terlalu banyak pesertanya",
-          'message': "Naikkan jumlah kursinya atau kurangi kelebihan pesertanya",
+          'title': _("Terlalu banyak pesertanya"),
+          'message': _("Naikkan jumlah kursinya atau kurangi kelebihan pesertanya"),
         },
       }
 
@@ -100,7 +100,7 @@ class Session(models.Model):
   def _check_instructor_not_in_attendees(self):
     for rec in self:
       if rec.instructor_id and rec.instructor_id in rec.attendee_ids:
-        raise exceptions.ValidationError("Instruktor tidak bisa peserta")
+        raise exceptions.ValidationError(_("Instruktor tidak bisa peserta"))
 
   @api.depends('start_date', 'duration')
   def _get_end_date(self):

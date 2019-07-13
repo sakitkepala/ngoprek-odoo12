@@ -189,5 +189,13 @@
       <menuitem id="menu_session" name="Sesi-Sesi"
         parent="menu_openacademy"
         action="action_list_session" />
+
+    <act_window id="launch_session_wizard"
+      name="Menambahkan Peserta"
+      src_model="openacademy.session"
+      res_model="openacademy.wizard"
+      view_mode="form"
+      target="new"
+      key2="client_action_multi" />
   </data>
 </odoo>

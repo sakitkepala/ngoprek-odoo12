@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <data>
+
+    <record id="act_session_graph" model="ir.actions.act_window">
+      <field name="name">Peserta menurut pelajaran</field>
+      <field name="res_model">openacademy.session</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">graph</field>
+      <field name="view_id"
+        ref="openacademy.view_graph_session_openacademy" />
+    </record>
+    <record id="act_session_calendar" model="ir.actions.act_window">
+      <field name="name">Sesi-sesi kelas</field>
+      <field name="res_model">openacademy.session</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">calendar</field>
+      <field name="view_id"
+        ref="openacademy.view_calendar_session" />
+    </record>
+    <record id="act_course_list" model="ir.actions.act_window">
+      <field name="name">Pelajaran-pelajaran</field>
+      <field name="res_model">openacademy.course</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    <record id="board_session_form" model="ir.ui.view">
+      <field name="name">Form Dashboard Sesi</field>
+      <field name="model">board.board</field>
+      <field name="type">form</field>
+      <field name="arch" type="xml">
+        <form string="Dashboard Session">
+          <board style="2-1">
+            <column>
+              <action
+                string="Peserta menurut pelajaran"
+                name="%(act_session_graph)d"
+                height="150"
+                width="510" />
+              <action
+                string="Sesi-sesi kelas"
+                name="%(act_session_calendar)d" />
+            </column>
+            <column>
+              <action
+                string="Pelajaran-pelajaran"
+                name="%(act_course_list)d" />
+            </column>
+          </board>
+        </form>
+      </field>
+    </record>
+    <record id="open_board_session" model="ir.actions.act_window">
+      <field name="name">Dashboard Sesi-Sesi Kelas</field>
+      <field name="res_model">board.board</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">form</field>
+      <field name="usege">menu</field>
+      <field name="view_id" ref="board_session_form" />
+    </record>
+
+    <menuitem
+      name="Dashboard Sesi Kelas" parent="base.menu_reporting_dashboard"
+      action="open_board_session"
+      sequence="1"
+      id="menu_board_session" />
+  </data>
+</odoo>

@@ -56,3 +56,16 @@ view kanban untuk suatu model dimulai dengan elemen root: <kanban>
   struktur card kanban dibuat dari campuran elemen form, html, & QWeb
   hasilnya adalah kanban board full, card yang ditumpuk dalam 1 list berkategori sama,
     dengan beberapa list/kolom
+
+kombinasi dari ir.actions.report yang menyediakan elemen <report> & QWeb view
+
+elemen <report>, macam-macam parameter basic untuk reportnya
+elemen <report> setara dengan <record> sebagai elemen "paling root" dari elemen <data>
+
+template QWeb dibuat & diawali dengan elemen <template>
+data dinamis pada report diambil dengan atribut t-field di dalam elemen template
+  yang memunculkan data dari fieldnya model
+data model untuk template QWeb report diambil dari yang sudah ditentukan di elemen report
+  yang di dalamnya mencantumkan atribut untuk nama model yang akan diambil
+
+definisi view report (<report>+template QWeb) akan menghasilkan tombol print pada tampilan form record tunggal untuk bisa mengaksesnya

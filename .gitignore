@@ -16,3 +16,4 @@ __pycache__/
 # File generated dari Vagrant
 *.box
 *.log
+old.Vagrantfile

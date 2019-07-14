@@ -1,5 +1,5 @@
 sudo apt-get update
-sudo apt-get upgrade
+sudo apt-get upgrade -y
 
 # Install Python 3 -> 3.6
 sudo apt-get install -y python3-dev python3-pip

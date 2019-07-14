@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <data>
+  
+    <act_window id="action_todo_task"
+      name="To-Do Task"
+      res_model="todo.task"
+      view_mode="tree,form" />
+
+    <menuitem id="menu_todo_task"
+      name="Todos"
+      action="action_todo_task" />
+  </data>
+</odoo>

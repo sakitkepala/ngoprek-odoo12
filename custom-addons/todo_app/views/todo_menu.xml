@@ -1,14 +1,14 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-  <!-- Action untuk buka List To-do Task -->
-  <act_window id="action_todo_task"
-    name="To-do Task"
-    res_model="todo.task"
-    view_mode="tree,form"
-    />
-  <!-- Menu item untuk buka list To-do Task -->
-  <menuitem id="menu_todo_task"
-    name="Todos"
-    action="action_todo_task"
-    />
+  <data>
+  
+    <act_window id="action_todo_task"
+      name="To-Do Task"
+      res_model="todo.task"
+      view_mode="tree,form" />
+
+    <menuitem id="menu_todo_task"
+      name="Todos"
+      action="action_todo_task" />
+  </data>
 </odoo>

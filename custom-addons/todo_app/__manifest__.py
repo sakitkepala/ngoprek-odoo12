@@ -1,11 +1,13 @@
 {
-  'name': 'Aplikasi To-Do',
-  'description': 'Modul dari tutorial, untuk tata kelola todo personal',
-  'author': 'Daniel Reis, Andika Priyotama',
-  'depends': ['base'],
+  'name': 'To-Do Application',
+  'description': 'Manage personal to-do tasks.',
+  'author': 'Daniel Ries, Andika Priyotama',
+  'version': '12.0.1.0',
   'application': True,
-  # 'data': [
-  #   'views/todo_menu.xml',
-  #   'views/todo_view.xml',
-  # ],
+
+  'depends': ['base'],
+  'data': [
+    'security/ir.model.access.csv',
+    'views/todo_menu.xml',
+  ],
 }

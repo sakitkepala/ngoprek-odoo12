@@ -7,7 +7,9 @@ sudo apt-get install -y python3-dev python3-pip
 # Install wkhtmltopdf -> 0.12.5-1
 sudo apt-get install -y wkhtmltopdf
 sudo wget https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.5/wkhtmltox_0.12.5-1.bionic_amd64.deb
-sudo gdebi --n wkhtmltox_0.12.5-1.bionic_amd64.deb
+sudo dpkg -i wkhtmltox_0.12.5-1.bionic_amd64.deb
+sudo apt install -f
+
 sudo rm -rf wkhtmltox_0.12.5-1.bionic_amd64.deb
 
 sudo cp /usr/local/bin/wkhtmltopdf /usr/bin
@@ -27,4 +29,4 @@ sudo apt-get install -y libxml2-dev libxslt1-dev libevent-dev \
 sudo apt-get install -y libldap2-dev libsasl2-dev
 
 # Install dependensi Python untuk jalankan Odoo
-sudo pip3 install -r /vagrant/odoo/requirements.txt
+sudo pip3 install -r /12/requirements.txt
